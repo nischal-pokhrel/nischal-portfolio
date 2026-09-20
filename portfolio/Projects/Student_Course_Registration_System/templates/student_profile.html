@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Student Profile - Course Registration System{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-edit me-2"></i>Student Profile
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('student_profile') }}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label fw-bold">
+                                    <i class="fas fa-id-card me-2"></i>Full Name
+                                </label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label fw-bold">
+                                    <i class="fas fa-envelope me-2"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="student_id" class="form-label fw-bold">
+                                    <i class="fas fa-user-graduate me-2"></i>Student ID
+                                </label>
+                                <input type="text" class="form-control" id="student_id" value="{{ student.student_id }}" readonly>
+                                <div class="form-text">Student ID cannot be changed</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label fw-bold">
+                                    <i class="fas fa-user me-2"></i>Username
+                                </label>
+                                <input type="text" class="form-control" id="username" value="{{ student.username }}" readonly>
+                                <div class="form-text">Username cannot be changed</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="major" class="form-label fw-bold">
+                                <i class="fas fa-graduation-cap me-2"></i>Major/Field of Study
+                            </label>
+                            <select class="form-select" id="major" name="major" required>
+                                <option value="Computer Science" {{ 'selected' if student.major == 'Computer Science' }}>Computer Science</option>
+                                <option value="Mathematics" {{ 'selected' if student.major == 'Mathematics' }}>Mathematics</option>
+                                <option value="Physics" {{ 'selected' if student.major == 'Physics' }}>Physics</option>
+                                <option value="Chemistry" {{ 'selected' if student.major == 'Chemistry' }}>Chemistry</option>
+                                <option value="Biology" {{ 'selected' if student.major == 'Biology' }}>Biology</option>
+                                <option value="Engineering" {{ 'selected' if student.major == 'Engineering' }}>Engineering</option>
+                                <option value="Business" {{ 'selected' if student.major == 'Business' }}>Business</option>
+                                <option value="Economics" {{ 'selected' if student.major == 'Economics' }}>Economics</option>
+                                <option value="Psychology" {{ 'selected' if student.major == 'Psychology' }}>Psychology</option>
+                                <option value="Sociology" {{ 'selected' if student.major == 'Sociology' }}>Sociology</option>
+                                <option value="English" {{ 'selected' if student.major == 'English' }}>English</option>
+                                <option value="History" {{ 'selected' if student.major == 'History' }}>History</option>
+                                <option value="Political Science" {{ 'selected' if student.major == 'Political Science' }}>Political Science</option>
+                                <option value="Art" {{ 'selected' if student.major == 'Art' }}>Art</option>
+                                <option value="Music" {{ 'selected' if student.major == 'Music' }}>Music</option>
+                                <option value="Other" {{ 'selected' if student.major == 'Other' }}>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('student_dashboard') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Update Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Account Information Card -->
+            <div class="card mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Account Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+                            <p><strong>Username:</strong> {{ student.username }}</p>
+                            <p><strong>Registration Date:</strong> <span class="text-muted">Auto-generated</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Account Status:</strong> <span class="badge bg-success">Active</span></p>
+                            <p><strong>Last Login:</strong> <span class="text-muted">Current session</span></p>
+                            <p><strong>Profile Updated:</strong> <span class="text-muted">Just now</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="card mt-4 border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h6 class="mb-0">
+                        <i class="fas fa-shield-alt me-2"></i>Security Notice
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2"><strong>Important:</strong></p>
+                    <ul class="mb-0">
+                        <li>Keep your login credentials secure and confidential</li>
+                        <li>Do not share your username and password with others</li>
+                        <li>Log out when using shared computers</li>
+                        <li>Contact the administrator if you suspect unauthorized access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Form validation
+document.querySelector('form').addEventListener('submit', function(e) {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    
+    if (name.length < 2) {
+        alert('Name must be at least 2 characters long');
+        e.preventDefault();
+        return;
+    }
+    
+    if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        e.preventDefault();
+        return;
+    }
+});
+</script>
+{% endblock %} 

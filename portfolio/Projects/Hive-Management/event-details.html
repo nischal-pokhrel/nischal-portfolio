@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Details | HIVE</title>
+  <link rel="stylesheet" href="styles.css" />
+  <form action="backend/register.php" method="POST">
+</head>
+<body>
+<div class="page-wrap">
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-badge">HV</div>
+        <div class="brand-text">
+          <div class="brand-title">HIVE</div>
+          <div class="brand-subtitle">Techspire College Events</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#calendar">Calendar</a>
+        <a href="index.html#updates">Updates</a>
+        <a href="branch-login.html" class="nav-cta">Branch Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Event details -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Event Details</h2>
+          <p class="section-subtitle">
+            Public event view including description, timing, venue, and branch information.
+          </p>
+        </div>
+        <div class="section-pill-row">
+          <span class="section-pill">Registered users only stored in database</span>
+        </div>
+      </div>
+
+      <article class="card">
+        <div class="event-grid">
+          <div>
+            <span class="event-branch-tag">
+              CSE-01 · Dev Branch
+            </span>
+            <h3 class="event-main-title">Intro to Web Components</h3>
+            <p class="event-desc">
+              This session introduces the concept of encapsulated, reusable UI using native web components. The focus is on practical implementation without heavy frameworks.
+            </p>
+            <div class="event-meta-grid">
+              <span class="badge"><strong>Date:</strong> 22 Feb 2026</span>
+              <span class="badge"><strong>Time:</strong> 10:00 AM – 12:00 PM</span>
+              <span class="badge"><strong>Venue:</strong> Lab 3, CSE Block</span>
+              <span class="badge"><strong>Branch ID:</strong> CSE-01 (auto)</span>
+            </div>
+          </div>
+          <div class="event-actions">
+            <span class="event-status-pill">Registration Open</span>
+            <span class="badge"><strong>Mode:</strong> Offline</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Registration form -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Registration</h2>
+          <p class="section-subtitle">
+            Public viewers can register using a simple 3-field form (Name, Email, Phone).
+          </p>
+        </div>
+        <div class="section-pill-row">
+          <span class="section-pill">Backend will store in database</span>
+          <span class="section-pill">CSRF &amp; validation handled by server</span>
+        </div>
+      </div>
+
+      <article class="card">
+        <form action="/register" method="POST">
+          <!-- CSRF token placeholder (server-side) -->
+          <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+
+          <!-- In college assignment, mention CSRF in report -->
+          <div class="form-grid-three">
+            <div class="form-group">
+              <label class="form-label" for="name">
+                Name <span class="form-required">*</span>
+              </label>
+              <input
+                class="input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Full name"
+                required
+              />
+              <p class="form-hint">Use the name as per your college ID card.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">
+                Email <span class="form-required">*</span>
+              </label>
+              <input
+                class="input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              />
+              <p class="form-hint">Confirmation and updates will be sent here.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="phone">
+                Phone <span class="form-required">*</span>
+              </label>
+              <input
+                class="input"
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+977-98XXXXXXXX"
+                required
+              />
+              <p class="form-hint">Used for day-of-event coordination only.</p>
+            </div>
+          </div>
+
+          <!-- Hidden event reference for backend -->
+          <input type="hidden" name="event_id" value="1" />
+
+          <div style="margin-top: 1rem; display:flex; gap:0.7rem; flex-wrap:wrap;">
+            <button type="submit" class="btn btn-primary">Submit Registration</button>
+            <a href="index.html#events" class="btn btn-outline">Back to Events</a>
+          </div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    HIVE Management System · Viewer can only see data, not edit events.
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+{% extends "base_new.html" %}
+
+{% block title %}Welcome - Student Course Registration System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="hero-title">
+                    <i class="fas fa-graduation-cap me-3"></i>
+                    Student Course Registration System
+                </h1>
+                <p class="hero-subtitle">
+                    Streamline your academic journey with our modern course registration platform. 
+                    Register for courses, manage your schedule, and track your progress with ease.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Get Started
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold mb-3">Why Choose Our System?</h2>
+                <p class="text-muted">Experience the future of course registration with our innovative features</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Easy Course Search</h4>
+                    <p class="text-muted">
+                        Find the perfect courses with our advanced search functionality. 
+                        Filter by subject, instructor, or schedule to find what fits your needs.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Real-time Availability</h4>
+                    <p class="text-muted">
+                        See course availability in real-time. Get instant updates on 
+                        enrollment numbers and course capacity.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Mobile Friendly</h4>
+                    <p class="text-muted">
+                        Access your course information anywhere, anytime. 
+                        Our responsive design works perfectly on all devices.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Progress Tracking</h4>
+                    <p class="text-muted">
+                        Monitor your academic progress with detailed statistics. 
+                        Track credits, GPA, and course completion status.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Secure & Reliable</h4>
+                    <p class="text-muted">
+                        Your data is protected with industry-standard security measures. 
+                        Rest easy knowing your information is safe.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">24/7 Support</h4>
+                    <p class="text-muted">
+                        Need help? Our support team is available around the clock 
+                        to assist you with any questions or issues.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5" style="background: var(--gray-50);">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold mb-3">How It Works</h2>
+                <p class="text-muted">Get started in just a few simple steps</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">1</span>
+                    </div>
+                    <h5 class="fw-bold">Create Account</h5>
+                    <p class="text-muted">Sign up with your student information to get started</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">2</span>
+                    </div>
+                    <h5 class="fw-bold">Browse Courses</h5>
+                    <p class="text-muted">Explore available courses and find what interests you</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">3I have created a new base template file templates/base_new.html with a modern fresh color palette, updated fonts, and new styling for buttons, cards, forms, and other UI elements.
+
+Next, I need your input on whether you want me to:
+1. Replace the existing templates/base.html with this new theme (overwrite it), or
+2. Update your other templates (like index.html) to extend from templates/base_new.html instead of base.html, so you can keep both themes side by side for testing.
+
+Please confirm how you want to proceed. Also, let me know if you want me to update any other templates to use the new theme.

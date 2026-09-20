@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Student Course Registration System{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-primary">
+                <i class="fas fa-user-plus me-2"></i>
+                Create Account
+            </h2>
+            <p class="text-muted">Join our course registration system</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('register') }}">
+            <div class="mb-3">
+                <label for="username" class="form-label fw-bold">
+                    <i class="fas fa-user me-2"></i>Username
+                </label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <div class="form-text">Choose a unique username for your account</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label fw-bold">
+                    <i class="fas fa-lock me-2"></i>Password
+                </label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="form-text">Create a strong password</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label fw-bold">
+                    <i class="fas fa-id-card me-2"></i>Full Name
+                </label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label fw-bold">
+                    <i class="fas fa-envelope me-2"></i>Email Address
+                </label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="major" class="form-label fw-bold">
+                    <i class="fas fa-graduation-cap me-2"></i>Major/Field of Study
+                </label>
+                <select class="form-select" id="major" name="major" required>
+                    <option value="">Select your major</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Business">Business</option>
+                    <option value="Economics">Economics</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Sociology">Sociology</option>
+                    <option value="English">English</option>
+                    <option value="History">History</option>
+                    <option value="Political Science">Political Science</option>
+                    <option value="Art">Art</option>
+                    <option value="Music">Music</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-user-plus me-2"></i>Create Account
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="text-muted mb-0">Already have an account?</p>
+            <a href="{{ url_for('login') }}" class="text-primary fw-bold text-decoration-none">
+                <i class="fas fa-sign-in-alt me-1"></i>Sign In
+            </a>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="text-center">
+            <h6 class="fw-bold mb-3">Benefits of Registration</h6>
+            <div class="row g-2">
+                <div class="col-6">
+                    <div class="card border-info">
+                        <div class="card-body p-2">
+                            <small class="text-info fw-bold">
+                                <i class="fas fa-book me-1"></i>Course Access
+                            </small><br>
+                            <small class="text-muted">Browse and register for courses</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card border-warning">
+                        <div class="card-body p-2">
+                            <small class="text-warning fw-bold">
+                                <i class="fas fa-chart-line me-1"></i>Progress Tracking
+                            </small><br>
+                            <small class="text-muted">Monitor your academic progress</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

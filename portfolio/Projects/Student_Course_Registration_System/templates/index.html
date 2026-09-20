@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Student Course Registration System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="hero-title">
+                    <i class="fas fa-graduation-cap me-3"></i>
+                    Student Course Registration System
+                </h1>
+                <p class="hero-subtitle">
+                    Streamline your academic journey with our modern course registration platform. 
+                    Register for courses, manage your schedule, and track your progress with ease.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Get Started
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold mb-3">Why Choose Our System?</h2>
+                <p class="text-muted">Experience the future of course registration with our innovative features</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Easy Course Search</h4>
+                    <p class="text-muted">
+                        Find the perfect courses with our advanced search functionality. 
+                        Filter by subject, instructor, or schedule to find what fits your needs.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Real-time Availability</h4>
+                    <p class="text-muted">
+                        See course availability in real-time. Get instant updates on 
+                        enrollment numbers and course capacity.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Mobile Friendly</h4>
+                    <p class="text-muted">
+                        Access your course information anywhere, anytime. 
+                        Our responsive design works perfectly on all devices.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Progress Tracking</h4>
+                    <p class="text-muted">
+                        Monitor your academic progress with detailed statistics. 
+                        Track credits, GPA, and course completion status.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Secure & Reliable</h4>
+                    <p class="text-muted">
+                        Your data is protected with industry-standard security measures. 
+                        Rest easy knowing your information is safe.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">24/7 Support</h4>
+                    <p class="text-muted">
+                        Need help? Our support team is available around the clock 
+                        to assist you with any questions or issues.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5" style="background: rgba(255, 255, 255, 0.1);">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold mb-3 text-white">How It Works</h2>
+                <p class="text-white-50">Get started in just a few simple steps</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">1</span>
+                    </div>
+                    <h5 class="fw-bold">Create Account</h5>
+                    <p class="text-white-50">Sign up with your student information to get started</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">2</span>
+                    </div>
+                    <h5 class="fw-bold">Browse Courses</h5>
+                    <p class="text-white-50">Explore available courses and find what interests you</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">3</span>
+                    </div>
+                    <h5 class="fw-bold">Register</h5>
+                    <p class="text-white-50">Register for your chosen courses with one click</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">4</span>
+                    </div>
+                    <h5 class="fw-bold">Manage</h5>
+                    <p class="text-white-50">Track your courses and manage your academic schedule</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Accounts Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="fw-bold mb-4">
+                            <i class="fas fa-info-circle me-2 text-primary"></i>
+                            Try Our Demo
+                        </h3>
+                        <p class="text-muted mb-4">
+                            Experience the system with our demo accounts. No registration required!
+                        </p>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card border-primary">
+                                    <div class="card-body">
+                                        <h5 class="fw-bold text-primary">
+                                            <i class="fas fa-user-graduate me-2"></i>
+                                            Student Demo
+                                        </h5>
+                                        <p class="small text-muted mb-2">Username: john_doe</p>
+                                        <p class="small text-muted mb-0">Password: password123</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card border-success">
+                                    <div class="card-body">
+                                        <h5 class="fw-bold text-success">
+                                            <i class="fas fa-user-shield me-2"></i>
+                                            Admin Demo
+                                        </h5>
+                                        <p class="small text-muted mb-2">Username: admin</p>
+                                        <p class="small text-muted mb-0">Password: admin123</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

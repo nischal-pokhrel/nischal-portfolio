@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Branch Dashboard | HIVE</title>
+  <link rel="stylesheet" href="styles.css" />
+  <form action="backend/branch-events-store.php" method="POST" style="margin-top:0.5rem;">
+    <form action="backend/branch-updates-store.php" method="POST">
+
+
+</head>
+<body>
+<div class="page-wrap">
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-badge">HV</div>
+        <div class="brand-text">
+          <div class="brand-title">HIVE</div>
+          <div class="brand-subtitle">Branch Dashboard</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Public View</a>
+        <a href="branch-dashboard.html">Dashboard</a>
+        <a href="/branch/logout" class="nav-cta">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">CSE-01 Branch Panel</h2>
+          <p class="section-subtitle">
+            Manage only your own events, registrations, attendance, calendar entries, and announcements.
+          </p>
+        </div>
+        <div class="section-pill-row">
+          <span class="section-pill">Authenticated branch user</span>
+          <span class="section-pill">Authorization done in middleware</span>
+        </div>
+      </div>
+
+      <div class="dashboard-layout">
+        <!-- Sidebar navigation (static links for assignment) -->
+        <aside class="sidebar">
+          <div>
+            <p class="sidebar-section-title">Navigation</p>
+            <ul class="sidebar-list">
+              <li><a href="#manage-events" class="sidebar-link active"><span>Events</span><span class="sidebar-link-badge">CRUD</span></a></li>
+              <li><a href="#registrations" class="sidebar-link"><span>Registrations</span><span class="sidebar-link-badge">List</span></a></li>
+              <li><a href="#attendance" class="sidebar-link"><span>Attendance</span><span class="sidebar-link-badge">Check</span></a></li>
+              <li><a href="#branch-calendar" class="sidebar-link"><span>Calendar</span><span class="sidebar-link-badge">Update</span></a></li>
+              <li><a href="#branch-updates" class="sidebar-link"><span>Announcements</span><span class="sidebar-link-badge">Post</span></a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="sidebar-section-title">Branch Identity</p>
+            <div class="card" style="padding:0.7rem;">
+              <p class="stat-label">Branch Name</p>
+              <p class="stat-value" style="font-size:0.95rem;">CSE Dev Branch</p>
+              <p class="stat-tag" style="margin-top:0.2rem;">Branch ID: CSE-01 (auto)</p>
+            </div>
+          </div>
+
+          <div class="sidebar-footer">
+            Security highlights:
+            <ul style="margin-top:0.4rem; list-style:disc; padding-left:1.1rem;">
+              <li>Authentication for branches only.</li>
+              <li>Authorization via backend middleware.</li>
+              <li>CSRF tokens for every form.</li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Dashboard content -->
+        <section class="dashboard-main">
+          <!-- Event CRUD -->
+          <article id="manage-events" class="card">
+            <div class="section-header" style="margin-top:0;">
+              <div>
+                <h3 class="section-title">Manage Events</h3>
+                <p class="section-subtitle">
+                  Create, edit, and delete events created by this branch only.
+                </p>
+              </div>
+              <div class="section-pill-row">
+                <span class="section-pill">Server will filter by branch_id</span>
+              </div>
+            </div>
+
+            <!-- Create / Edit Event Form -->
+            <form action="/branch/events" method="POST" style="margin-top:0.5rem;">
+              <!-- CSRF placeholder -->
+              <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+              <!-- <input type="hidden" name="branch_id" value="{{ auth()->user()->branch_id }}"> -->
+
+              <div class="form-grid-two">
+                <div class="form-group">
+                  <label class="form-label" for="event_title">
+                    Title <span class="form-required">*</span>
+                  </label>
+                  <input
+                    class="input"
+                    type="text"
+                    id="event_title"
+                    name="title"
+                    placeholder="Event title"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="event_date">
+                    Date <span class="form-required">*</span>
+                  </label>
+                  <input
+                    class="input"
+                    type="date"
+                    id="event_date"
+                    name="date"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="event_time">
+                    Time <span class="form-required">*</span>
+                  </label>
+                  <input
+                    class="input"
+                    type="time"
+                    id="event_time"
+                    name="time"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="event_venue">
+                    Venue <span class="form-required">*</span>
+                  </label>
+                  <input
+                    class="input"
+                    type="text"
+                    id="event_venue"
+                    name="venue"
+                    placeholder="Hall / Lab / Room"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top:0.75rem;">
+                <label class="form-label" for="event_description">
+                  Description <span class="form-required">*</span>
+                </label>
+                <textarea
+                  class="textarea"
+                  id="event_description"
+                  name="description"
+                  placeholder="Short description of the event, agenda, and target audience."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="inline-tag-row">
+                <span class="inline-tag">Branch ID is auto-assigned from authenticated branch.</span>
+                <span class="inline-tag">Only this branch can edit or delete these events.</span>
+              </div>
+
+              <div style="margin-top:0.9rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+                <button type="submit" class="btn btn-primary">Save Event</button>
+                <button type="reset" class="btn btn-outline">Reset Form</button>
+              </div>
+            </form>
+
+            <!-- Existing events (branch only) -->
+            <div style="margin-top:1rem;">
+              <p class="form-hint">
+                Existing events for this branch (sample static rows; backend will fill dynamically).
+              </p>
+
+              <div class="card" style="margin-top:0.6rem; padding:0.8rem;">
+                <div class="event-grid">
+                  <div>
+                    <h4 class="event-main-title">Intro to Web Components</h4>
+                    <div class="event-meta-grid">
+                      <span class="badge"><strong>Date:</strong> 22 Feb 2026</span>
+                      <span class="badge"><strong>Time:</strong> 10:00 AM – 12:00 PM</span>
+                      <span class="badge"><strong>Venue:</strong> Lab 3</span>
+                    </div>
+                  </div>
+                  <div class="event-actions">
+                    <!-- In real backend: PUT/PATCH / DELETE routes -->
+                    <button class="btn btn-outline" type="button">Edit</button>
+                    <button class="btn btn-outline" type="button">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Registrations View -->
+          <article id="registrations" class="card">
+            <div class="section-header" style="margin-top:0;">
+              <div>
+                <h3 class="section-title">Registered Participants</h3>
+                <p class="section-subtitle">
+                  View registrations for events belonging only to this branch.
+                </p>
+              </div>
+              <div class="section-pill-row">
+                <span class="section-pill">Data fetched by event_id &amp; branch_id</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="event_filter">
+                Filter by Event
+              </label>
+              <select class="select" id="event_filter" name="event_filter">
+                <option value="">Select an event</option>
+                <option value="1">Intro to Web Components (22 Feb 2026)</option>
+                <option value="2">Another CSE Event (28 Feb 2026)</option>
+              </select>
+            </div>
+
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Participant Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Registered At</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Aarav Sharma</td>
+                    <td>aarav.sharma@example.com</td>
+                    <td>98XXXXXXXX</td>
+                    <td>2026-02-10 09:12</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Sita Karki</td>
+                    <td>sita.karki@example.com</td>
+                    <td>98XXXXXXXX</td>
+                    <td>2026-02-10 10:04</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <!-- Attendance -->
+          <article id="attendance" class="card">
+            <div class="section-header" style="margin-top:0;">
+              <div>
+                <h3 class="section-title">Attendance</h3>
+                <p class="section-subtitle">
+                  Mark presence using checkboxes against registered participants on event day.
+                </p>
+              </div>
+              <div class="section-pill-row">
+                <span class="section-pill">Attendance stored by event_id &amp; user_id</span>
+              </div>
+            </div>
+
+            <form action="/branch/attendance" method="POST">
+              <!-- CSRF placeholder -->
+              <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+              <input type="hidden" name="event_id" value="1" />
+
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Participant Name</th>
+                      <th>Email</th>
+                      <th class="checkbox-center">Present</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Aarav Sharma</td>
+                      <td>aarav.sharma@example.com</td>
+                      <td class="checkbox-center">
+                        <input type="checkbox" name="attendance[1]" value="present" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sita Karki</td>
+                      <td>sita.karki@example.com</td>
+                      <td class="checkbox-center">
+                        <input type="checkbox" name="attendance[2]" value="present" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="margin-top:0.9rem;">
+                <button type="submit" class="btn btn-primary">Save Attendance</button>
+              </div>
+            </form>
+          </article>
+
+          <!-- Branch Calendar -->
+          <article id="branch-calendar" class="card">
+            <div class="section-header" style="margin-top:0;">
+              <div>
+                <h3 class="section-title">Branch Calendar</h3>
+                <p class="section-subtitle">
+                  Update calendar entries related only to this branch’s events.
+                </p>
+              </div>
+              <div class="section-pill-row">
+                <span class="section-pill">Displayed on public calendar view</span>
+              </div>
+            </div>
+
+            <p class="form-hint">
+              For full-stack implementation, map each event to a calendar date and regenerate the HTML grid from backend.
+            </p>
+
+            <div class="calendar-card">
+              <div class="calendar-header">
+                <p class="calendar-title">February 2026 · CSE-01</p>
+                <p class="calendar-meta">Only branch events highlighted here.</p>
+              </div>
+
+              <div class="calendar-grid">
+                <div class="calendar-day-label">Mon</div>
+                <div class="calendar-day-label">Tue</div>
+                <div class="calendar-day-label">Wed</div>
+                <div class="calendar-day-label">Thu</div>
+                <div class="calendar-day-label">Fri</div>
+                <div class="calendar-day-label">Sat</div>
+                <div class="calendar-day-label">Sun</div>
+
+                <div class="calendar-cell">
+                  <span class="calendar-date">1</span>
+                </div>
+                <div class="calendar-cell">
+                  <span class="calendar-date">2</span>
+                  <span class="calendar-event-tag">Intro to Web Components</span>
+                </div>
+                <div class="calendar-cell">
+                  <span class="calendar-date">3</span>
+                </div>
+                <div class="calendar-cell">
+                  <span class="calendar-date">4</span>
+                </div>
+                <div class="calendar-cell">
+                  <span class="calendar-date">5</span>
+                </div>
+                <div class="calendar-cell">
+                  <span class="calendar-date">6</span>
+                </div>
+                <div class="calendar-cell">
+                  <span class="calendar-date">7</span>
+                </div>
+                <!-- continue static cells as needed -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Branch Announcements -->
+          <article id="branch-updates" class="card">
+            <div class="section-header" style="margin-top:0;">
+              <div>
+                <h3 class="section-title">Post Updates</h3>
+                <p class="section-subtitle">
+                  Share event updates / announcements that are visible on the public updates section.
+                </p>
+              </div>
+              <div class="section-pill-row">
+                <span class="section-pill">Branch-scoped announcements</span>
+              </div>
+            </div>
+
+            <form action="/branch/updates" method="POST">
+              <!-- CSRF placeholder -->
+              <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+              <div class="form-group">
+                <label class="form-label" for="update_title">
+                  Title <span class="form-required">*</span>
+                </label>
+                <input
+                  class="input"
+                  type="text"
+                  id="update_title"
+                  name="title"
+                  placeholder="[CSE-01] Event room changed / Deadline extended"
+                  required
+                />
+              </div>
+
+              <div class="form-group" style="margin-top:0.75rem;">
+                <label class="form-label" for="update_body">
+                  Message <span class="form-required">*</span>
+                </label>
+                <textarea
+                  class="textarea"
+                  id="update_body"
+                  name="body"
+                  placeholder="Short announcement text to be shown publicly."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="inline-tag-row">
+                <span class="inline-tag">Public viewers can only read announcements.</span>
+                <span class="inline-tag">Only authenticated branch can post / edit / delete.</span>
+              </div>
+
+              <div style="margin-top:0.9rem;">
+                <button type="submit" class="btn btn-primary">Publish Update</button>
+              </div>
+            </form>
+          </article>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    HIVE Branch Dashboard · HTML/CSS UI prototype. Backend handles auth, data storage, and security.
+  </footer>
+</div>
+</body>
+</html>

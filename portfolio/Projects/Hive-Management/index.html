@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HIVE | Techspire College Events</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrap">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-badge">HV</div>
+        <div class="brand-text">
+          <div class="brand-title">HIVE</div>
+          <div class="brand-subtitle">Techspire College Events</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#events">Events</a>
+        <a href="#calendar">Calendar</a>
+        <a href="#updates">Updates</a>
+        <a href="branch-login.html" class="nav-cta">Branch Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- HERO -->
+    <section class="hero-grid">
+      <article class="hero-card">
+        <div class="hero-chip-row">
+          <div class="chip">
+            <span class="chip-dot"></span>
+            Live across 5 branches
+          </div>
+          <div class="chip">No login needed for registrations</div>
+        </div>
+        <h1 class="hero-title">
+          Central **HIVE** Events Hub
+        </h1>
+        <p class="hero-subtitle">
+          Discover and register for technical, creative, and community events powered by HIVE, the student innovation body under Techspire College.
+        </p>
+
+        <div class="hero-meta-row">
+          <div class="meta-pill">
+            <strong>5</strong> active branches
+          </div>
+          <div class="meta-pill">
+            <strong>Public</strong> event calendar
+          </div>
+          <div class="meta-pill">
+            <strong>Simple</strong> 3-field registration form
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="#events" class="btn btn-primary">Browse Upcoming Events</a>
+          <a href="#calendar" class="btn btn-outline">View Event Calendar</a>
+        </div>
+      </article>
+
+      <aside class="hero-side-card">
+        <div class="hero-side-header">
+          <p class="hero-side-title">Today at Techspire</p>
+          <span class="status-pill">Registrations Open</span>
+        </div>
+        <div class="hero-stat-row">
+          <div class="stat-card">
+            <p class="stat-label">Live Events</p>
+            <p class="stat-value">03</p>
+            <p class="stat-tag">Across all branches</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Registered today</p>
+            <p class="stat-value">27</p>
+            <p class="stat-tag">Public viewers only</p>
+          </div>
+        </div>
+        <p class="hero-subtitle" style="margin-top: 0.4rem;">
+          View event details, register without login, and keep track of announcements from each HIVE branch.
+        </p>
+      </aside>
+    </section>
+
+    <!-- EVENTS LIST -->
+    <section id="events" class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Upcoming Events</h2>
+          <p class="section-subtitle">
+            Public list of all events created by HIVE branches.
+          </p>
+        </div>
+        <div class="section-pill-row">
+          <span class="section-pill">Visible to everyone</span>
+          <span class="section-pill">Managed by branches</span>
+        </div>
+      </div>
+
+      <!-- Event example 1 -->
+      <article class="card">
+        <div class="event-grid">
+          <div>
+            <span class="event-branch-tag">
+              CSE-01 · Dev Branch
+            </span>
+            <h3 class="event-main-title">Intro to Web Components</h3>
+            <p class="event-desc">
+              Learn the basics of modern component-based UI, custom elements, and styling strategies for scalable front-end projects.
+            </p>
+            <div class="event-meta-grid">
+              <span class="badge"><strong>Date:</strong> 22 Feb 2026</span>
+              <span class="badge"><strong>Time:</strong> 10:00 AM – 12:00 PM</span>
+              <span class="badge"><strong>Venue:</strong> Lab 3, CSE Block</span>
+            </div>
+          </div>
+          <div class="event-actions">
+            <span class="event-status-pill">Registration Open</span>
+            <a href="event-details.html" class="btn btn-outline">View Details &amp; Register</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event example 2 -->
+      <article class="card">
+        <div class="event-grid">
+          <div>
+            <span class="event-branch-tag">
+              DES-02 · Design Branch
+            </span>
+            <h3 class="event-main-title">Design Sprint: UI in a Day</h3>
+            <p class="event-desc">
+              A fast-paced workshop focused on taking ideas from sketch to clickable prototype in under eight hours.
+            </p>
+            <div class="event-meta-grid">
+              <span class="badge"><strong>Date:</strong> 25 Feb 2026</span>
+              <span class="badge"><strong>Time:</strong> 09:30 AM – 05:00 PM</span>
+              <span class="badge"><strong>Venue:</strong> Innovation Studio</span>
+            </div>
+          </div>
+          <div class="event-actions">
+            <span class="event-status-pill">Registration Open</span>
+            <a href="event-details.html" class="btn btn-outline">View Details &amp; Register</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- CALENDAR (Public) -->
+    <section id="calendar" class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Event Calendar</h2>
+          <p class="section-subtitle">
+            Month-wise overview of all scheduled events for quick planning.
+          </p>
+        </div>
+        <div class="section-pill-row">
+          <span class="section-pill">Static HTML calendar grid</span>
+          <span class="section-pill">Updated by branches</span>
+        </div>
+      </div>
+
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <p class="calendar-title">February 2026</p>
+          <p class="calendar-meta">Events across 5 HIVE branches</p>
+        </div>
+
+        <div class="calendar-grid">
+          <!-- Day labels -->
+          <div class="calendar-day-label">Mon</div>
+          <div class="calendar-day-label">Tue</div>
+          <div class="calendar-day-label">Wed</div>
+          <div class="calendar-day-label">Thu</div>
+          <div class="calendar-day-label">Fri</div>
+          <div class="calendar-day-label">Sat</div>
+          <div class="calendar-day-label">Sun</div>
+
+          <!-- First row (example placeholder cells + event) -->
+          <div class="calendar-cell">
+            <span class="calendar-date">1</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">2</span>
+            <span class="calendar-event-tag">CSE · Web Components</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">3</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">4</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">5</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">6</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">7</span>
+          </div>
+
+          <!-- more static dates as needed -->
+          <div class="calendar-cell">
+            <span class="calendar-date">8</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">9</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">10</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">11</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">12</span>
+            <span class="calendar-event-tag">DES · Design Sprint</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">13</span>
+          </div>
+          <div class="calendar-cell">
+            <span class="calendar-date">14</span>
+          </div>
+          <!-- continue static as needed for assignment -->
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATES / ANNOUNCEMENTS (Public) -->
+    <section id="updates" class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Event Updates</h2>
+          <p class="section-subtitle">
+            Branch announcements about schedules, room changes, and important notes.
+          </p>
+        </div>
+        <div class="section-pill-row">
+          <span class="section-pill">Maintained by branch admins</span>
+          <span class="section-pill">Visible to all viewers</span>
+        </div>
+      </div>
+
+      <article class="card">
+        <p class="event-main-title">[CSE-01] Web Components workshop room update</p>
+        <p class="event-desc">
+          Venue changed from Lab 2 to Lab 3 due to lab maintenance. Participants are requested to arrive 10 minutes early for quick attendance.
+        </p>
+        <div class="event-meta-grid">
+          <span class="badge"><strong>Posted by:</strong> CSE Dev Branch</span>
+          <span class="badge"><strong>Date:</strong> 18 Feb 2026</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="event-main-title">[DES-02] New registration deadline</p>
+        <p class="event-desc">
+          Registration for Design Sprint: UI in a Day closes on 22 Feb at 11:59 PM. Shortlisted students will receive email confirmation.
+        </p>
+        <div class="event-meta-grid">
+          <span class="badge"><strong>Posted by:</strong> Design Branch</span>
+          <span class="badge"><strong>Date:</strong> 17 Feb 2026</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    HIVE Management System · Techspire College · Frontend prototype (HTML &amp; CSS only)
+  </footer>
+</div>
+</body>
+</html>

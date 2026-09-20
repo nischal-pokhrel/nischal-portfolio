@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyano Cup Coffee | Nepali Artisan Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="scroll-progress-bar"></div>
+
+    <header>
+        <div class="logo-container">
+            <h1>न्यानो कप</h1>
+            <span>Nyano Cup Coffee</span>
+        </div>
+        <nav>
+            <ul id="nav-tabs-list">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#shop">Beans</a></li>
+                <li><a href="#booking">Book Table</a></li>
+                <li><a href="#cart">Basket <span id="cart-nav-count">0</span></a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button onclick="handlePortalClick()" id="portal-nav-btn">Club Login</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home" class="hero-split-section">
+        <div class="hero-text-content">
+            <span class="hero-badge">✨ 100% Organic Single-Origin</span>
+            <h2 class="text-reveal-animation">Authentic Himalayan Coffee Experience</h2>
+            <p>Grown at crisp high altitudes and slow-roasted to perfection. Taste the exceptional flavor profiles of single-origin Arabica coffee sourced directly from sustainable family micro-lots across Nepal.</p>
+            <div class="hero-cta-wrapper">
+                <a href="#menu" class="basic-btn interactive-glow">Explore Live Menu</a>
+                <a href="#booking" class="secondary-btn">Reserve Workspace</a>
+            </div>
+            
+            <div class="hero-features-strip">
+                <div class="feature-tag-item"><span>🏔️</span> High Altitude</div>
+                <div class="feature-tag-item"><span>🔥</span> Micro-Roasted</div>
+                <div class="feature-tag-item"><span>🤝</span> Group K Sourced</div>
+            </div>
+        </div>
+        <div class="hero-visual-frame animate-float">
+            <div class="image-gradient-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop" alt="Premium Coffee Extraction">
+            <div class="hero-floating-card dynamic-blur">
+                <h4>Rs. 90</h4>
+                <p>Starting Premium Treats</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="menu">
+        <h2 class="section-title">Fresh Brews & <span>Local Eats</span></h2>
+        <p class="section-subtitle">Delightful premium extractions paired with iconic local treats.</p>
+        <div id="menu-grid-target" class="grid-container">
+            </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">The Nyano <span>Viewport</span></h2>
+        <p class="section-subtitle">Take a look inside our organic roasting routines and community workspace hubs.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-zoom-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9oq623M3cxzWyj85eDnd067xxUZuUpllFJx8YtzOR_w&s=10" alt="Espresso Extraction"></div>
+                <h3>Precision Extractions</h3>
+                <p>High-pressure pulls highlighting rich crema profiles.</p>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-zoom-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT6pygXv4GdUQdAM-mTd6zkz0H5mP9dFJ4iPiiT5R8gw&s=10" alt="Coffee Pour Over"></div>
+                <h3>Artisanal Filter Drip</h3>
+                <p>Pour-over methods accentuating complex fruit notes.</p>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-zoom-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_btFmX-uj7Ga5ElM3XXjV6S6bXl5wDy99KDr3geVG0A&s=10" alt="Coffee Packs"></div>
+                <h3>Fresh Sealed Pouches</h3>
+                <p>Aromatic roast bags prepared instantly after flame processing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop">
+        <h2 class="section-title">Bring the <span>Roast Home</span></h2>
+        <p class="section-subtitle">Premium whole-bean bags sealed immediately at our source-region roasteries.</p>
+        <div id="shop-grid-target" class="grid-container">
+            </div>
+    </section>
+
+    <section id="booking">
+        <div class="premium-card styling-glass-effect" style="max-width: 750px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align: left;">Reserve a <span>Workstation</span></h2>
+            <p style="color: #7F8C8D; margin-bottom: 25px; font-size: 14px;">Book a focused workstation section built with comfortable seating and dedicated power lines.</p>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Patron Full Name</label>
+                    <input type="text" id="bookName" placeholder="e.g. Nischal Pokhrel" required>
+                </div>
+                <div class="form-group">
+                    <label>Target Date</label>
+                    <input type="date" id="bookDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Time Block</label>
+                    <select id="bookTime">
+                        <option>Morning Session (07:00 AM - 12:00 PM)</option>
+                        <option>Midday Session (12:00 PM - 04:00 PM)</option>
+                        <option>Evening Session (04:00 PM - 09:00 PM)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Seating Architecture Design Style</label>
+                    <select id="bookStyle">
+                        <option>Traditional Low Wooden Table with Cushion Flooring</option>
+                        <option>Focused Window Counter Bench with Mountain View</option>
+                        <option>Central Heritage Timber Conference Bench</option>
+                    </select>
+                </div>
+                <button type="submit" class="basic-btn interactive-glow" style="width: 100%;">Submit Table Reservation Request</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="cart">
+        <div class="premium-card styling-glass-effect" style="max-width: 750px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align: left;">Your Selection <span>Basket</span></h2>
+            <p style="color: #7F8C8D; margin-bottom: 25px; font-size: 14px;">Verify your gourmet brews, manage quantities, and dispatch your order instantly.</p>
+            
+            <div id="basket-club-promo" class="club-incentive-badge">
+                ✨ <strong>Exclusive Reward Club Rate:</strong> Sign in to unlock an instant 10% Club Member discount on this entire order!
+            </div>
+
+            <div id="cart-items-container"></div>
+            
+            <div class="checkout-breakdown-box">
+                <div class="breakdown-row">
+                    <span>Subtotal (Full Price)</span>
+                    <span id="breakdown-subtotal">Rs. 0</span>
+                </div>
+                <div class="breakdown-row discount">
+                    <span>Club Member Discount (<span id="breakdown-rate-label">0%</span>)</span>
+                    <span id="breakdown-discount-val">- Rs. 0</span>
+                </div>
+                <div class="breakdown-row final">
+                    <span>Final Payable Amount</span>
+                    <span id="breakdown-final" style="color: var(--terracotta); font-weight: 800;">Rs. 0</span>
+                </div>
+            </div>
+
+            <button onclick="executeCheckout()" class="basic-btn interactive-glow" style="width: 100%;">Confirm Secure Order Dispatch</button>
+        </div>
+    </section>
+
+    <section id="about" class="story-premium-section styling-glass-effect">
+        <div class="story-layout-wrapper">
+            <div class="story-visual-canvas">
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop" alt="Pouring fresh coffee beans">
+                <div class="experience-tag">Since 2025</div>
+            </div>
+            <div class="story-text-canvas">
+                <span class="sub-heading-accent">Our Journey</span>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">The Spirit of <span>Nyano Cup</span></h2>
+                <p class="story-highlight"><strong>"Nyano Cup" (न्यानो कप)</strong> means a truly warm and comforting cup. Our coffee path wanders through mist-covered mountain hillsides in Gulmi, Nuwakot, and Lalitpur.</p>
+                <p class="story-body">Grown naturally in mineral-rich soil under protective mountain shade, these cherries carry distinctive profiles of dark cocoa, mild citrus accents, and deep caramelized sweetness.</p>
+                
+                <div class="story-milestones-grid">
+                    <div class="milestone-pill">
+                        <h5>100%</h5>
+                        <p>Organic Arabica</p>
+                    </div>
+                    <div class="milestone-pill">
+                        <h5>High</h5>
+                        <p>Altitude Lots</p>
+                    </div>
+                    <div class="milestone-pill">
+                        <h5>Group K</h5>
+                        <p>Verified Sourcing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="premium-card styling-glass-effect" style="max-width: 750px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align: left;">Message <span>Group K Desk</span></h2>
+            <div class="contact-meta-box" style="display: flex; gap: 20px; margin-bottom: 25px; flex-wrap: wrap;">
+                <div class="meta-info-card">
+                    <h4>📱 Support Line</h4>
+                    <p style="font-weight: 600; margin-top: 4px;">+977-98XXXXXXXX</p>
+                </div>
+                <div class="meta-info-card">
+                    <h4>✉️ Gmail Address</h4>
+                    <p style="font-weight: 600; margin-top: 4px;">nyanocup.groupk@gmail.com</p>
+                </div>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Your Return Email Address</label>
+                    <input type="email" placeholder="example@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Detail Your Inquiry / Feedback Note</label>
+                    <textarea rows="4" placeholder="Write your context message specifications..." required></textarea>
+                </div>
+                <button type="submit" class="basic-btn interactive-glow" style="width: 100%;">Send Electronic Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 style="font-size: 18px; color: var(--mustard);">न्यानो कप</h3>
+                <p style="font-size: 13px; line-height: 1.6; color: #BDC3C7;">Delivering 100% organic, hand-sorted specialty mountain coffee beans straight from regional family micro-lots into cozy community spaces.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Group K Creator Collective</h3>
+                <ul style="color: #BDC3C7; font-size: 14px; list-style: none;">
+                    <li>Nischal Pokhrel</li>
+                    <li>Subesh Adhikari</li>
+                    <li>Bibek Kumar Karki</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Operation Shifts</h3>
+                <p style="font-size: 14px; color: #BDC3C7;">Mon - Fri: 07:00 AM - 09:00 PM</p>
+                <p style="font-size: 14px; color: #BDC3C7; margin-top: 4px;">Sat - Sun: 08:00 AM - 08:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nyano Cup Project Framework. Engineered cleanly by Group K. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="product-modal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-image-slot" class="card-img-wrapper" style="border-radius:8px; margin-bottom:15px;"></div>
+            <h2 id="modal-title" style="color: var(--terracotta);"></h2>
+            <p id="modal-desc" style="margin: 15px 0; color: #566573; font-size: 14px;"></p>
+            <h3 id="modal-price" style="color: var(--charcoal); margin-bottom: 20px; font-size: 22px;"></h3>
+            <div id="modal-action-slot"></div>
+        </div>
+    </div>
+
+    <div id="portal-modal" class="modal-overlay" onclick="closePortalModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closePortalModal()">&times;</span>
+            <div id="portal-modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

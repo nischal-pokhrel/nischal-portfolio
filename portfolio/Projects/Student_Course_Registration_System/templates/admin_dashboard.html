@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Course Registration System{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="fw-bold mb-2">
+                                <i class="fas fa-user-shield me-2 text-primary"></i>
+                                Welcome, {{ admin.name }}!
+                            </h2>
+                            <p class="text-muted mb-0">
+                                Administrator Dashboard | Total Courses: {{ courses|length }} | 
+                                Total Students: {{ students|length }}
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <a href="{{ url_for('add_course') }}" class="btn btn-success">
+                                <i class="fas fa-plus me-2"></i>Add New Course
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ courses|length }}</div>
+                <div class="stats-label">Total Courses</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ students|length }}</div>
+                <div class="stats-label">Total Students</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">
+                    {% set total_enrollments = 0 %}
+                    {% for course in courses %}
+                        {% set total_enrollments = total_enrollments + course.enrolled %}
+                    {% endfor %}
+                    {{ total_enrollments }}
+                </div>
+                <div class="stats-label">Total Enrollments</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">
+                    {% set total_capacity = 0 %}
+                    {% for course in courses %}
+                        {% set total_capacity = total_capacity + course.capacity %}
+                    {% endfor %}
+                    {{ total_capacity }}
+                </div>
+                <div class="stats-label">Total Capacity</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Management Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-book me-2"></i>Course Management
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if courses %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Course Code</th>
+                                        <th>Course Name</th>
+                                        <th>Instructor</th>
+                                        <th>Credits</th>
+                                        <th>Enrolled/Capacity</th>
+                                        <th>Schedule</th>
+                                        <th>Room</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for course in courses %}
+                                    <tr>
+                                        <td><strong>{{ course.code }}</strong></td>
+                                        <td>{{ course.name }}</td>
+                                        <td>{{ course.instructor }}</td>
+                                        <td>{{ course.credits }}</td>
+                                        <td>
+                                            <span class="badge bg-{{ 'success' if course.enrolled < course.capacity else 'danger' }}">
+                                                {{ course.enrolled }}/{{ course.capacity }}
+                                            </span>
+                                        </td>
+                                        <td>{{ course.schedule }}</td>
+                                        <td>{{ course.room }}</td>
+                                        <td>
+                                            <form method="POST" action="{{ url_for('remove_course', course_id=course.id) }}" style="display: inline;">
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to remove this course? This will also remove all student enrollments.')">
+                                                    <i class="fas fa-trash me-1"></i>Remove
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-book text-muted" style="font-size: 3rem;"></i>
+                            <h5 class="text-muted mt-3">No courses available</h5>
+                            <p class="text-muted">Add your first course to get started.</p>
+                            <a href="{{ url_for('add_course') }}" class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>Add Course
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Students Overview Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-users me-2"></i>Students Overview
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if students %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Major</th>
+                                        <th>Registered Courses</th>
+                                        <th>Total Credits</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in students %}
+                                    <tr>
+                                        <td><strong>{{ student.student_id }}</strong></td>
+                                        <td>{{ student.name }}</td>
+                                        <td>{{ student.username }}</td>
+                                        <td>{{ student.email }}</td>
+                                        <td>{{ student.major }}</td>
+                                        <td>
+                                            <span class="badge bg-primary">{{ student.registered_courses|length }}</span>
+                                        </td>
+                                        <td>
+                                            {% set student_credits = 0 %}
+                                            {% for course_id in student.registered_courses %}
+                                                {% for course in courses %}
+                                                    {% if course.id == course_id %}
+                                                        {% set student_credits = student_credits + course.credits %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endfor %}
+                                            <span class="badge bg-info">{{ student_credits }}</span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-users text-muted" style="font-size: 3rem;"></i>
+                            <h5 class="text-muted mt-3">No students registered</h5>
+                            <p class="text-muted">Students will appear here once they register for courses.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Auto-refresh page every 60 seconds to show updated statistics
+setTimeout(function() {
+    location.reload();
+}, 60000);
+</script>
+{% endblock %} 
